@@ -1,2 +1,2 @@
-const {poker} = require('./src/poker')
-poker.start();
+const {start} = require('./src/poker')
+start();

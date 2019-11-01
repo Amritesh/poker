@@ -74,4 +74,6 @@ const controls = []
 
 const pot = []
 
-exports.boundingBoxes = [...myCards,...commonCards];
+const boundingBoxes = [...myCards,...commonCards];
+
+module.exports = {boundingBoxes}

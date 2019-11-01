@@ -1,8 +1,8 @@
-const {imageLibrary} = require('./imageLibrary')
-const {utils} = require('./utils')
+const {testMatch} = require('./imageLibrary')
+const {convertCoords} = require('./utils')
 
 const file1='./cards/m2/m2_ts.png',file2='./cards/m2/m2_tsf.png';
-console.log(imageLibrary.testMatch(file1,file2));
+console.log(testMatch(file1,file2));
 
 let coords = [
   [[36,135],[59,170]],
@@ -13,4 +13,4 @@ let coords = [
   [[162,163],[196,208]],
   [[197,165],[230,207]],
 ]
-console.log(utils.convertCoords(coords));
+console.log(convertCoords(coords));
