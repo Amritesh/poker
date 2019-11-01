@@ -3,7 +3,7 @@ const PNG = require('pngjs').PNG;
 const pixelmatch = require('pixelmatch');
 const sharp = require('sharp');
 const screenshot = require('screenshot-desktop');
-const {config} = require('./config')
+const {config} = require('../config')
 
 exports.imageLibrary = {
   screensShot: (name) => {
