@@ -1,29 +1,31 @@
 const fs = require('fs');
-const {state} = require('./state')
 const {boundingBoxes} = require('./boundingBoxes')
 const {screensShot, extract, searchImage} = require('./imageLibrary')
 const {randomImage} = require('./utils')
 const {wait} = require('../config')
+const {GameState, Player, Card} = require('./components')
 
 const init = () => {
-  return state;
+  return new GameState();
 }
 
 const play = (gameState) => {
-  if(gameState.hand<10){
+  gameState.clear();
+  if(gameState.hand<5){
     const screen = randomImage();
-    screensShot(screen).then( img =>
+    screensShot(screen).then( img => 
       Promise.all(boundingBoxes.map(box=>extract(img, box))).then(boxes=>{
         boxes.forEach((box) => {
-          const searched = searchImage(box);
-          if(searched && !searched.includes('new_')){
-            console.log(searched);
+          const match = searchImage(box);
+          if(match && !match.includes('new_')){
+            const card = new Card(match);
+            console.log(card);
           } else if(gameState.mode === 'training'){
             const randomFile = './cards/'+box.name+'/new_'+randomImage();
             fs.copyFile(box.image, randomFile,() => {});
           }
         })
-        console.log(gameState);
+        // console.log(gameState);
         fs.unlinkSync(screen);
         gameState.hand++;
         setTimeout(play,wait,gameState);

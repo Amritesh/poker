@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "image-diff": "^2.0.0",
+    "jest": "^24.9.0",
     "pixelmatch": "^5.1.0",
     "screenshot-desktop": "^1.10.0",
     "sharp": "^0.23.2"
