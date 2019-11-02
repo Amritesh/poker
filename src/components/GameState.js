@@ -1,3 +1,5 @@
+const {Player} = require('./Player')
+
 class GameState {
   constructor() {
     this.tournamentId = 0
@@ -27,6 +29,8 @@ class GameState {
 
   clearPlayers(){
     this.players.length = 0;
+    const player = new Player();
+    this.players.push(player);
   }
 
   addCommonCard(card){
@@ -39,6 +43,11 @@ class GameState {
 
   getWinProbability(){
     return this.players[this.me].cards.length/7;
+  }
+
+  getNextMove(){
+    console.log(this.players[0].cards)
+    console.log(this.commonCards);
   }
 }
 

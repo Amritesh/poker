@@ -6,8 +6,8 @@ class Card {
   }
 
   getCardInfo(image){
-    this.rank = '',
-    this.type = ''
+    this.rank = image.slice(3,4),
+    this.type = image.slice(4,5)
   }
 }
 
