@@ -8,14 +8,13 @@ test('matches two photos and returns similarity', () => {
 
 test('converts coordinates to bounding box', () => {
   const coords = [
-    [[36,135],[59,170]],
-    [[59,136],[100,170]],
-    [[164,80],[223,107]],
-    [[393,80],[453,107]],
-    [[366,357],[603,395]],
-    [[162,163],[196,208]],
-    [[197,165],[230,207]],
+    [[204,196],[244,250]],
+    [[248,196],[288,250]],
+    [[292,196],[332,250]],
+    [[336,196],[376,250]],
+    [[380,196],[420,250]]
   ]
   const bounds = convertCoords(coords);
+  console.log(bounds)
   expect(bounds.length).toBe(coords.length);
 });

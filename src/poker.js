@@ -11,15 +11,14 @@ const init = () => {
 
 const getCard = (box, gameState) => {
   const match = searchImage(box);
-  if(match && !match.includes('new_')){
-    console.log(match);
+  if(match){
     const card = new Card(match);
     if(match.includes('m1_') || match.includes('m2_')){
       gameState.players[0].cards.push(card);
-    } else {
+    } else if(card.rank !== '' && card.type !== ''){
       gameState.commonCards.push(card);
     }
-  } else if(gameState.mode === 'training'){
+  } else{
     const randomFile = './cards/'+box.name+'/new_'+randomImage();
     fs.copyFile(box.image, randomFile,() => {});
   }
@@ -27,7 +26,7 @@ const getCard = (box, gameState) => {
 
 const play = (gameState) => {
   gameState.clear();
-  if(gameState.hand<5){
+  if(gameState.hand<1000){
     const screen = randomImage();
     screensShot(screen).then( img => 
       Promise.all(boundingBoxes.map(box=>extract(img, box))).then(boxes=>{

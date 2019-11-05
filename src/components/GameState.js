@@ -46,8 +46,9 @@ class GameState {
   }
 
   getNextMove(){
-    console.log(this.players[0].cards)
-    console.log(this.commonCards);
+    // console.log(this.players[0].cards)
+    if(this.commonCards.length)
+      console.log(this.commonCards);
   }
 }
 
